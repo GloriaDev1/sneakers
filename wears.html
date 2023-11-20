@@ -1,0 +1,511 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Men's Shoe Collection</title>
+
+    <style>
+
+        :root {
+          /* Primary */
+          --Orange:  hsl(84.18deg 65.71% 30.79% / 78%);
+          --Pale-orange: hsl(187.65deg 37.69% 60.82% / 36%);;
+          /* Neutral */
+          --Very-dark-blue: hsl(220, 13%, 13%);
+          --Dark-grayish-blue: hsl(219, 9%, 94%);
+          --Grayish-blue: hsl(220, 14%, 65%);
+          --Light-grayish-blue: hsl(223, 64%, 98%);
+          --White: hsl(0, 0%, 100%);
+          --Black: hsl(0, 0%, 0%); /* with 75% opacity for lightbox background*/
+
+          --ff-primary: "Kumbh Sans", sans-serif;
+
+          /* font-family */
+          --fw-regular: 200;
+          --fw-medium: 400;
+          --fw-semi-bold: 700;
+          --fw-extra-bold: 900;
+          /* font-size */
+          --fs-200: 0.5rem;
+          --fs-300: 0.625rem;
+          --fs-400: 0.75rem;
+          --fs-500: 0.875rem;
+          --fs-600: 1rem;
+          --fs-700: 1.125rem;
+          --fs-800: 1.75rem;
+          --fs-900: 3rem;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            /* background-color: #f5f5f5; */
+            
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .shoe-collection {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 20px;
+            align-items: end;
+        }
+
+        .shoe-item {
+            border: 1px groove #40dfcb73;
+            padding: 20px;
+            text-align: center;
+            background-color: #fff;
+            box-shadow: -3px 2px 12px rgba(12, 12, 220, 0.3);
+            border-top-right-radius: 30px;
+            border-bottom-left-radius: 30px;
+        }
+
+        .shoe-image {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .shoe-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .shoe-description {
+            font-size: 14px;
+            color: #777;
+        }
+        .svg-icon-cart{
+            box-shadow: 2px 2px 5px #494992d6;
+            padding: 5px;
+            border-radius: 80%;
+            
+            float: right;
+            cursor: pointer;
+        }
+        .svg-icon-cart:hover{
+            background-color: #2b4e8d;
+        }
+
+        .icon-added-state{
+            background-color: #ed64a0;
+        }
+        .icon-unadded-state{
+            background-color: cornflowerblue;
+        }
+
+        .added{
+            float: right;
+            font-size: xx-small;
+            color: cornflowerblue;
+            filter: blur(0.6px);
+        }
+        .price-bundle{
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-bottom: 0.7rem;
+            margin-top: 0.8rem;
+        }
+
+        #product-price {
+            font-weight: bold;
+            color: cadetblue;
+        }
+
+        a{
+            /*text-decoration: blink;*/
+            font-style: oblique;
+            color: yellowgreen;
+        }
+
+        #discount-rate{
+            font-weight: var(--fw-semi-bold);
+            color: var(--Orange);
+            background-color: var(--Pale-orange);
+            border-radius: 0.25rem;
+            width: 2.2rem;
+            font-size: x-small;
+        }
+
+        @media (min-width: 530px) {
+            
+            #discount-rate {
+                font-size: var(--fs-600);
+                font-weight: var(--fw-semi-bold);
+                color: var(--Orange);
+                background-color: var(--Pale-orange); 
+                border-radius: 0.25rem;
+                width: 3.2rem;
+                height: 1.75rem;
+                text-align: center;
+                padding-top: 0.3rem;
+            }
+
+            #product-price{
+                font-size: xx-large;
+            }
+           
+        }
+
+        /* Reset some default styles */
+        body, h1, h2, h3, p {
+            margin: 0;
+            padding: 0;
+        }
+
+                /* Navigation bar styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--Very-dark-blue);
+            color: white;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .navbar-logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .navbar-links a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .navbar-icons {
+            display: flex;
+            gap: 10px;
+            display: flex;
+            gap: 54px;
+            justify-content: space-evenly;
+            width: 200px;
+            margin-right: 5%;
+            transform: translateX(100%);
+
+        }
+
+        .navbar-mobile-menu {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Media queries for responsive design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .navbar-links {
+                display: none;
+                flex-direction: column;
+                background-color: var(--Very-dark-blue);
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                padding: 20px;
+            }
+
+            .navbar-mobile-menu {
+                display: block;
+            }
+
+            .navbar-mobile-menu.active + .navbar-links {
+                display: flex;
+            }
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -300px; /* Initial position outside the viewport */
+            width: 300px;
+            height: 100%;
+            background-color: var(--Very-dark-blue);
+            color: white;
+            transition: left 0.4s cubic-bezier(0.49, -0.29, 0.66, 0.43);
+            z-index: 999;
+        }
+
+        .sidebar.active {
+            left: 0; /* Slide into view */
+        }
+
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: var(--Dark-grayish-blue);
+        }
+
+        .sidebar-header h2 {
+            font-size: 1.5rem;
+        }
+
+        .sidebar-close {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+        }
+
+        .sidebar-links {
+            padding: 20px;
+        }
+
+        .sidebar-links a {
+            display: block;
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: white;
+        }
+
+        #collection-select{
+            outline: none;
+            border: none;
+            border-bottom: 2px solid #616ca244;
+            box-shadow: 1px 1px 9px rgba(13,11,122,0.4);
+            padding: 20px;
+            color: cornflowerblue;
+            font-weight: 500;
+            border-radius: 80px;
+            width: 190px;
+        }
+
+        .dropdown-collection {
+            position: relative;
+            display: inline-block;
+        }
+
+        #collection-select {
+            outline: none;
+            border: none;
+            border-bottom: 2px solid #616ca244;
+            box-shadow: 1px 1px 9px rgba(13,11,122,0.4);
+            padding: 20px;
+            color: cornflowerblue;
+            font-weight: 500;
+            border-radius: 80px;
+            appearance: none; /* Hide default arrow in modern browsers */
+            background-color: transparent; /* To show the background color behind the arrow */
+            cursor: pointer;
+        }
+
+        #collection-select::-ms-expand {
+            display: none; /* Hide default arrow in IE */
+        }
+
+        /* Custom down arrow icon */
+        .dropdown-collection::after {
+            content: '\25BE'; /* Unicode down arrow character */
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: #586fefc7;
+        }
+
+        /* Apply spacing between select and arrow */
+        #collection-select + .dropdown-collection::after {
+            right: 20px; /* Adjust the spacing */
+        }       
+
+    </style>
+    <style>
+        .shoe-item{
+            opacity: 1;
+            transition : opacity 2s ease-in-out;
+        }
+        .hide-opacity{
+            opacity : 0
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="navbar-logo">
+            <img src="your-logo.png" alt="Logo">
+            <h1>Store Name</h1>
+        </div>
+        <div class="navbar-links">
+            <a href="#">All Collections</a>
+            <a href="#">Men</a>
+            <a href="#">Women</a>
+            <a href="#">Category</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+        <div class="navbar-icons">
+
+            <!-- mobile menu icon -->
+            <svg class='navbar-mobile-menu' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+            </svg>
+
+            <svg class="navbar-icon" width="24" height="24" viewBox="0 0 24 24">
+                <!-- Your cart icon SVG here -->
+            </svg>
+
+                <!-- Payment icon SVG here -->
+            
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+            </svg>
+
+                <!-- Your user icon SVG here -->
+            
+            <svg class="navbar-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 6a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8 8a8 8 0 1 0 0 16m0-16v8"/>
+            </svg>
+
+        </div>
+    </div>
+
+    <div class="sidebar" id='mobile-sidebar'>
+        <div class="sidebar-header">
+            <h2>Menu</h2>
+            <svg class="sidebar-close" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </div>
+        <div class="sidebar-links">
+            <a href="#">All Collections</a>
+            <a href="#">Men</a>
+            <a href="#">Women</a>
+            <a href="#">Category</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+    </div>
+
+    <section style="margin:100px 20px">
+
+        <div class="dropdown-collection">
+            <select id="collection-select">
+                <option value="men">Men's Collection</option>
+                <option value="women">Women's Collection</option>
+                <option value="unisex">Unisex Collection</option>
+            </select>
+        </div>
+
+        <h1 id="h1-collection-selected">Men's Shoe Collection</h1>
+
+        <div class="shoe-collection">
+            
+            <!--
+                <div class="shoe-item">
+                    <img class="shoe-image" src="./images/shoes/images_2.jpeg">
+                    <div class="shoe-title">Addidas Forum 84</div>
+                    <div class="shoe-description">Comfortable and stylish casual sneakers.</div>
+
+                    <svg class="svg-icon-cart icon-unadded-state" width="22" height="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.925 3.641H3.863L3.61.816A.896.896 0 0 0 2.717 0H.897a.896.896 0 1 0 0 1.792h1l1.031 11.483c.073.828.52 1.726 1.291 2.336C2.83 17.385 4.099 20 6.359 20c1.875 0 3.197-1.87 2.554-3.642h4.905c-.642 1.77.677 3.642 2.555 3.642a2.72 2.72 0 0 0 2.717-2.717 2.72 2.72 0 0 0-2.717-2.717H6.365c-.681 0-1.274-.41-1.53-1.009l14.321-.842a.896.896 0 0 0 .817-.677l1.821-7.283a.897.897 0 0 0-.87-1.114ZM6.358 18.208a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm10.015 0a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm2.021-7.243-13.8.81-.57-6.341h15.753l-1.383 5.53Z" fill="#FFFFFF" fill-rule="nonzero"></path>
+                    </svg>
+
+                </div>
+
+                <div class="shoe-item">
+                    <span class="added">added</span>
+                    <img class="shoe-image" src="./images/shoes/new-balance-990v6.webp">
+                    <div class="shoe-title">Formal New-Balance Shoes</div>
+                    <div class="shoe-description">Classic formal New-Balance shoes for any occasion.
+                        <a href="#">more detail</a>
+                    </div>
+
+                    <div class="price-bundle">
+                        <span id="product-price"> $125.00 </span>
+                        <span id="discount-rate">50%</span>
+                    </div>
+
+                    <svg class="svg-icon-cart icon-unadded-state" width="22" height="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.925 3.641H3.863L3.61.816A.896.896 0 0 0 2.717 0H.897a.896.896 0 1 0 0 1.792h1l1.031 11.483c.073.828.52 1.726 1.291 2.336C2.83 17.385 4.099 20 6.359 20c1.875 0 3.197-1.87 2.554-3.642h4.905c-.642 1.77.677 3.642 2.555 3.642a2.72 2.72 0 0 0 2.717-2.717 2.72 2.72 0 0 0-2.717-2.717H6.365c-.681 0-1.274-.41-1.53-1.009l14.321-.842a.896.896 0 0 0 .817-.677l1.821-7.283a.897.897 0 0 0-.87-1.114ZM6.358 18.208a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm10.015 0a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm2.021-7.243-13.8.81-.57-6.341h15.753l-1.383 5.53Z" fill="#FFFFFF" fill-rule="nonzero"></path>
+                    </svg>
+
+                </div>
+
+                <div class="shoe-item">
+                    <img class="shoe-image" src="./images/shoes/nike-air-jordan-1.webp" >
+                    <div class="shoe-title">Nike AIr Jordan 1 Mid</div>
+                    <div class="shoe-description">High-fashion shoes for sleek homies.</div>
+
+                    <svg class="svg-icon-cart icon-unadded-state" width="22" height="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.925 3.641H3.863L3.61.816A.896.896 0 0 0 2.717 0H.897a.896.896 0 1 0 0 1.792h1l1.031 11.483c.073.828.52 1.726 1.291 2.336C2.83 17.385 4.099 20 6.359 20c1.875 0 3.197-1.87 2.554-3.642h4.905c-.642 1.77.677 3.642 2.555 3.642a2.72 2.72 0 0 0 2.717-2.717 2.72 2.72 0 0 0-2.717-2.717H6.365c-.681 0-1.274-.41-1.53-1.009l14.321-.842a.896.896 0 0 0 .817-.677l1.821-7.283a.897.897 0 0 0-.87-1.114ZM6.358 18.208a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm10.015 0a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm2.021-7.243-13.8.81-.57-6.341h15.753l-1.383 5.53Z" fill="#FFFFFF" fill-rule="nonzero"></path>
+                    </svg>
+                </div>
+
+                <div class="shoe-item">
+                    <img class="shoe-image" src="./images/shoes/puma-clyde-OG-sneakers.webp">
+                    <div class="shoe-title">Casual Puma Clyde OG</div>
+                    <div class="shoe-description">Comfortable and versatile loafers for everyday wear.</div>
+                
+                    <svg class="svg-icon-cart icon-unadded-state" width="22" height="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.925 3.641H3.863L3.61.816A.896.896 0 0 0 2.717 0H.897a.896.896 0 1 0 0 1.792h1l1.031 11.483c.073.828.52 1.726 1.291 2.336C2.83 17.385 4.099 20 6.359 20c1.875 0 3.197-1.87 2.554-3.642h4.905c-.642 1.77.677 3.642 2.555 3.642a2.72 2.72 0 0 0 2.717-2.717 2.72 2.72 0 0 0-2.717-2.717H6.365c-.681 0-1.274-.41-1.53-1.009l14.321-.842a.896.896 0 0 0 .817-.677l1.821-7.283a.897.897 0 0 0-.87-1.114ZM6.358 18.208a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm10.015 0a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm2.021-7.243-13.8.81-.57-6.341h15.753l-1.383 5.53Z" fill="#FFFFFF" fill-rule="nonzero"></path>
+                    </svg>
+                </div>
+            -->
+        </div>
+    </section>
+</body>
+
+<script type="text/javascript">
+    // const cart_icons = document.querySelectorAll(".svg-icon-cart");
+
+    // cart_icons.forEach(icon =>{
+    //     icon.addEventListener('click',evt =>{
+    //         icon.classList.toggle("icon-unadded-state");
+    //         icon.classList.toggle("icon-added-state")
+    //     })
+    // });
+
+    const mobile_sidebar = document.querySelector("#mobile-sidebar")
+    const mobileMenuIcon = document.querySelector('.navbar-mobile-menu');
+     
+        mobileMenuIcon.addEventListener('click', () => {
+            mobileMenuIcon.classList.toggle('active');
+            if(mobileMenuIcon.classList.contains("active")){
+                mobile_sidebar.classList.add("active");
+            }else{
+                  mobile_sidebar.classList.remove("active");
+            }
+        });
+
+</script>
+
+<script src="./script/utility/products.js"></script>
+<script src="./script/components/shoe_item.js"></script>
+
+<script src="./script/wears.js"></script>
+
+</html>

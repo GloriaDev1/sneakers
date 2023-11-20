@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="index.css" />
+
+    <style type="text/css">
+      .payment-form{
+          padding: 25px;
+          margin: 20px auto;
+          box-shadow: -3px 2px 12px rgba(12, 12, 220, 0.3);
+          border-radius: 10px;
+          display: grid;
+          grid-template-columns: repeat(1, 1fr);
+          grid-gap: 20px;
+          width: fit-content;
+          justify-items: center;
+      }
+      .payment-form-group{
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 30px;
+      }
+
+      .payment-form-group input{
+         border: none;
+          border-bottom: 1px solid #6495edc7;
+          margin-top: 10px;
+          outline: none;
+          cursor: cell;
+          font-size: 1.5em;
+          filter: drop-shadow(1px 1px 1px rgba(12,12,12,0.2));
+          padding-top: 10px;
+          padding-bottom: 8px;
+          text-align: center;
+          border-radius: 3px;
+          color: #4b6b97;
+          border-bottom-left-radius: 8px;
+          border-bottom-right-radius: 8px;
+      }
+
+      .payment-form-group label{
+          filter: drop-shadow(1px 1px 2px rgba(11,22,43,0.2));
+          color: cornflowerblue;
+          font-style: italic;
+
+      }
+
+      .btn{
+          padding: 1.25rem 6rem;
+          border-radius: 0.8rem;
+          border: none;
+          /* background-color: var(--Orange); */
+          background-color: hsl(229.74deg 40.58% 61.04%);
+          color: #ffffff;
+          font-size: var(--fs-600);
+          font-weight: var(--fw-semi-bold);
+          text-align: center;
+          cursor: pointer;
+      }
+
+    </style>
+
+    <title>Checkout</title>
+  </head>
+  <body>
+    <div id="pop-up-background"></div>
+
+    <header>
+      <div class="left-section">
+        <img src="images/logo.svg" id="logo" />
+        <nav>
+          <ul>
+            <li>Collections</li>
+            <li>Contact</li>
+          </ul>
+        </nav>
+      </div>
+      <div class="right-section">
+        <img src="images/image-avatar.png" id="user" />
+      </div>
+    </header>
+
+    <div id="line"></div>
+
+    <div class="main" style="display: flex; justify-content: center;">
+      <section style="margin: 100px 20px;">
+        <h1>Payment - Checkout</h1>
+        <form class="payment-form">
+          
+         
+
+          <div id='stage-1'>
+            
+            <h4 style="
+                text-align: center;
+                margin-bottom: 2rem;
+                text-decoration: underline;
+                text-decoration-color: hsl(187.65deg 72.77% 49.59%);
+            "> Delivery Details </h4>
+            
+            <div class="payment-form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required="">
+            </div>
+            <div class="payment-form-group">
+                <label for="first-name">First Name</label>
+                <input type="text" id="first-name" name="first-name" >
+            </div>
+
+            <div class="payment-form-group">
+                <label for="last-name">Last Name</label>
+                <input type="text" id="last-name" name="last-name">
+            </div>
+           
+            <div class="payment-form-group">
+              <label for="delivery-address">Delivery Address</label>
+              <input type="text" id="delivery-address" name="delivery-address" required="">
+            </div>
+            
+            <div class="payment-form-group">
+              <label for="delivery-country">Delivery Country</label>
+              <input type="text" id="delivery-country" name="delivery-country" required="">
+            </div>
+            
+            <div class="payment-form-group">
+              <label for="postal-code">Postal Code</label>
+              <input type="text" id="postal-code" name="postal-code" required>
+            </div>
+
+            <span id="add-to-cart" class='next-btn'>Next</span>
+          </div>
+
+          <div id='stage-2' class='hide'>
+
+            <div class="payment-form-group dropdown-collection">
+                <label for="payment-type">Payment Type</label>
+                <select id="collection-select" name="payment-type" required="">
+                    <option value="mastercard">MasterCard</option>
+                    <option value="visa">Visa</option>
+                    <option value="stripe">Stripe</option>
+                    <option value="paypal">PayPal</option>
+                    <option value="paystack">Paystack</option>
+                </select>
+            </div>
+
+            <div class="payment-form-group">
+                <label for="amount">Amount</label>
+                <input type="text" id="amount" name="amount" value="$100.00" readonly="">
+            </div>
+
+            <div class="payment-form-group extra-fields" id="mastercard-fields">
+                <label for="card-number">Card Number</label>
+                <input type="text" id="card-number" name="card-number">
+                <!-- ... other MasterCard fields ... -->
+            </div>
+
+            <div class="payment-form-group extra-fields" id="paypal-fields">
+                <label for="paypal-username">PayPal Username</label>
+                <input type="text" id="paypal-username" name="paypal-username">
+                <!-- ... other PayPal fields ... -->
+            </div>
+
+            <!-- Add other payment method fields as needed -->
+            <button type="submit" id="add-to-cart">Pay</button>
+
+          </div>
+        </form>
+    </section>
+
+    </div>
+    
+    <footer>
+      <div class="attribution">
+        
+      </div>
+   </footer>
+    
+    <script src="./script/checkout.js"></script>
+  </body>
+</html>

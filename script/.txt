@@ -1,0 +1,20 @@
+ - WORKED ON REMOVING PRODUCT ID KEY FROM QUANTITYINCART WHEN DELETE BTN FOR CART ITEMS IS CLICKED
+
+ - WORKED ON UPDATING PRODUCT QUANTITY FOR ITEMS IN CART IF THE ITEM IS ALREADY IN CART BOTH FOR ITEMSINCART & QUANTITYINCART
+
+- WORK ON SCROLL PROPERTY OF THE LEFT AND RIGHT ICON SO AS TO ENABLE THE PRODUCT THUMBNAIL DIV TO SCROLL TO THE POSITION OF ACTIVE THUMBNAIL IMAGE
+
+- WORK ON ADDING EVENT LISTENER AGAIN TO THE LEFT AND RIGHT ICON THAT TRIGGERS CHANGING ACITVE ELEMENT SO THAT THE PRODUCT QUANTITY shown WILL BE THE RIGHT QUNANTITY IF PRODUCT HAS BEEN ADDED TO CART OTHERWISE IT SHOWS ZERO
+
+- WORK ON UPDATING CART ICON NUMBER REPRESENTING TOTAL NUMBER OF DIFFERENT PRODUCT IN CART
+note : we created a function for this. we also have to consider where to call this function. places for calling this function are  the following 
+    1. when the user just add an item to CART
+    2. when a single product or all product is deleted from CART . this also includes when the remove span is used to remove an items already in cart when it sets it to 0
+
+- WORK ON CHECKOUT TO CHECK OUT PAGE // ALLOW THE USER CHOOSE PAY ON DELIVERY OR PURCHASE STRAIGHT UPD
+
+
+
+
+OTHER MODIFICATION YOU GUYS CAN DO TO ENHANCE THE APPLICATION IS :
+instead of using alert to show message create your own custom alert component using div and let it display off after a given setTimeOut when called upon 

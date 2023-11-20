@@ -1,0 +1,559 @@
+@import url("https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@200;400;700;900&display=swap");
+
+:root {
+  /* Primary */
+  --Orange: hsl(26, 100%, 55%);
+  --Pale-orange: hsl(25, 100%, 94%);
+  /* Neutral */
+  --Very-dark-blue: hsl(220, 13%, 13%);
+  --Dark-grayish-blue: hsl(219, 9%, 94%);
+  --Grayish-blue: hsl(220, 14%, 65%);
+  --Light-grayish-blue: hsl(223, 64%, 98%);
+  --White: hsl(0, 0%, 100%);
+  --Black: hsl(0, 0%, 0%); /* with 75% opacity for lightbox background*/
+
+  --ff-primary: "Kumbh Sans", sans-serif;
+
+  /* font-family */
+  --fw-regular: 200;
+  --fw-medium: 400;
+  --fw-semi-bold: 700;
+  --fw-extra-bold: 900;
+  /* font-size */
+  --fs-200: 0.5rem;
+  --fs-300: 0.625rem;
+  --fs-400: 0.75rem;
+  --fs-500: 0.875rem;
+  --fs-600: 1rem;
+  --fs-700: 1.125rem;
+  --fs-800: 1.75rem;
+  --fs-900: 3rem;
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  font-family: var(--ff-primary);
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--Light-grayish-blue);
+  /* background-color: red; */
+
+  user-select: none;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80rem;
+  margin-top: 2rem;
+}
+.left-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#logo {
+  height: 1.6rem;
+}
+ul {
+  display: flex;
+  padding-left: 3.5rem;
+  gap: 1.85rem;
+  list-style: none;
+  font-size: var(--fs-600);
+  font-weight: var(--fw-semi-bold);
+  color: var(--Grayish-blue);
+  cursor: pointer;
+  position: absolute;
+  top: 3.1rem;
+}
+li::after {
+  content: "";
+  display: none;
+  height: 0.3rem;
+  background-color: var(--Orange);
+  position: relative;
+  top: 3.8rem;
+}
+li:hover::after {
+  display: block;
+}
+li:hover {
+  color: var(--Black);
+  opacity: 75%;
+}
+
+#line {
+  margin-top: 2.5rem;
+  background-color: var(--Grayish-blue);
+  height: 0.08rem;
+  width: 80rem;
+}
+.right-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  
+}
+#icon-cart {
+  height: 1.5rem;
+  cursor: pointer;
+  position: relative;
+  right: 0.5rem;
+}
+#icon-cart:active {
+  scale: 0.95;
+}
+#user {
+  height: 3.8rem;
+  cursor: pointer;
+}
+#user:hover {
+  border: 0.2rem solid var(--Orange);
+  border-radius: 2rem;
+}
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80rem;
+}
+.main-left-section {
+  margin: 5rem 8rem 4rem 5rem;
+  margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#product-main-img {
+  
+  border-radius: 1.5rem;
+  height: 300px;
+  width: 300px;
+}
+#product-main-img:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+#product-main-img:active {
+  scale: 0.98;
+}
+.thumbnail {
+  height: 7rem;
+  border-radius: 1rem;
+  width: 7rem;
+  margin-right: 20px;
+}
+.product-thumbnail {
+  display: flex;
+  margin-top: 1.75rem;
+  justify-content: space-between;
+  align-items: center;
+  width: 60%;
+  overflow-x: auto;
+  padding: 10px;
+}
+.main-right-section {
+  height: 32rem;
+  width: 30rem;
+}
+h2 {
+  font-size: var(--fs-500);
+  font-weight: var(--fw-extra-bold);
+  color: var(--Orange);
+  letter-spacing: 0.1rem;
+  padding-bottom: 1.5rem;
+}
+h1 {
+  font-size: var(--fs-900);
+  line-height: 3rem;
+  margin-bottom: 3rem;
+}
+#product-description {
+  font-size: var(--fs-600);
+  font-weight: var(--fw-semi-bold);
+  color: var(--Grayish-blue);
+  margin-bottom: 2rem;
+  line-height: 1.7rem;
+}
+.price-bundle {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin-bottom: 0.7rem;
+}
+#product-price {
+  font-size: var(--fs-800);
+  font-weight: var(--fw-semi-bold);
+}
+#discount-rate {
+  font-size: var(--fs-600);
+  font-weight: var(--fw-semi-bold);
+  color: var(--Orange);
+  background-color: var(--Pale-orange);
+  border-radius: 0.25rem;
+  width: 3.2rem;
+  height: 1.75rem;
+  text-align: center;
+  padding-top: 0.3rem;
+}
+#old-price {
+  font-weight: var(--fw-extra-bold);
+  font-size: var(--fs-600);
+  color: var(--Grayish-blue);
+  text-decoration: line-through;
+}
+#counter {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 5rem;
+  width: 100%;
+}
+#button-cart {
+  position: relative;
+  top: 0.2rem;
+  right: 0.9rem;
+}
+#button-cart:hover {
+  opacity: 95;
+}
+#add-to-cart {
+  padding: 1.25rem 6rem;
+  border-radius: 5.8rem;
+  border: none;
+  background-color: var(--Orange);
+  color: #ffffff;
+  font-size: var(--fs-600);
+  font-weight: var(--fw-semi-bold);
+  text-align: center;
+  filter: drop-shadow(1px 1px 4px rgba(11,12,212,0.4));
+}
+#add-to-cart:hover {
+  opacity: 70%;
+  cursor: pointer;
+}
+#add-to-cart:active {
+  scale: 0.98;
+}
+.left-side {
+  background-color: var(--Dark-grayish-blue);
+  border-radius: 0.5rem;
+  width: 9rem;
+  height: 4rem;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#count-panel {
+  font-size: var(--fs-600);
+  font-weight: var(--fw-semi-bold);
+}
+
+#add,
+#remove {
+  height: 3rem;
+  width: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+#add:hover,
+#remove:hover {
+  opacity: 70%;
+}
+#add:active,
+#remove:active {
+  scale: 0.95;
+}
+.top-right-cart-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+}
+
+#icon-cart-number {
+  background-color: hsl(196.51deg 31.61% 37.33%);
+    text-align: center;
+    border-radius: 100%;
+    font-weight: var(--fw-extra-bold);
+    color: var(--White);
+    position: absolute;
+    top: 2.2rem;
+    z-index: 4;
+    padding: 0.5em;
+    font-size: xx-small;
+}
+
+#inside-cart {
+  position: absolute;
+  height: 16rem;
+  width: 22rem;
+  background-color: var(--Light-grayish-blue);
+  top: 6.8rem;
+  right: 17rem;
+  border-radius: 0.5rem;
+  z-index: 5;
+  box-shadow: 0.5rem 1rem 3rem rgba(0, 0, 0, 0.377);
+  overflow: hidden;
+  border: none;
+}
+#inside-cart-top {
+  height: 4rem;
+  border-bottom: 0.1rem solid var(--Grayish-blue);
+}
+#inside-cart-top-text {
+  position: relative;
+  top: 1.3rem;
+  left: 1rem;
+  font-size: var(--fs-600);
+  font-weight: var(--fw-semi-bold);
+}
+#cart-is-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 11rem;
+  width: 100%;
+}
+#cart-is-empty-text {
+  position: relative;
+  top: 4.5rem;
+  left: 6.5rem;
+  font-size: var(--fs-700);
+  font-weight: var(--fw-semi-bold);
+  color: var(--Grayish-blue);
+}
+#inside-cart-product-img {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 0.3rem;
+}
+#inside-cart-product-img:hover {
+  cursor: pointer;
+}
+#cart-is-fill {
+  display: flex;
+  flex-direction: column;
+  height: 11.5rem;
+}
+#calculate {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.3rem;
+}
+#icon-delete {
+  width: 1rem;
+}
+#icon-delete:hover {
+  cursor: pointer;
+}
+#icon-delete:active {
+  scale: 0.95;
+}
+#cart-fill-container {
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 6rem;
+}
+#inside-cart-checkout {
+  position: relative;
+  left: 1.5rem;
+  align-self: center;
+  width: 17rem;
+  padding: 1.1rem;
+  margin: 1rem;
+  border-radius: 0.8rem;
+  border: none;
+  background-color: var(--Orange);
+  color: var(--White);
+  font-size: var(--fs-600);
+  font-weight: var(--fw-semi-bold);
+  text-align: center;
+}
+#inside-cart-checkout:hover {
+  opacity: 70%;
+  cursor: pointer;
+  box-shadow: 0.2rem 1.2rem 0.4rem var(--Pale-orange);
+}
+#inside-cart-checkout:active {
+  scale: 0.98;
+}
+.inside-text {
+  font-size: var(--fs-600);
+  font-weight: var(--fw-medium);
+  color: var(--Grayish-blue);
+}
+#inside-cart-product-calculated-price {
+  font-weight: var(--fw-semi-bold);
+}
+.thumbnail:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+.thumbnail:active {
+  scale: 0.95;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+.attribution {
+  font-size: var(--fs-400);
+  font-weight: var(--fw-medium);
+}
+#main-slide {
+  top: 9rem;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+  width: fit-content;
+  z-index: 9;
+}
+#slide {
+  height: 38rem;
+  top: 8rem;
+  left: 40rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 7;
+  flex-direction: row;
+}
+.slide-img {
+  height: 35rem;
+  border-radius: 2rem;
+}
+.direction {
+  height: 1.5rem;
+}
+.direction-btn {
+  width: 4rem;
+  height: 4rem;
+  border: none;
+  border-radius: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.direction-btn:hover {
+  opacity: 95%;
+  cursor: pointer;
+  scale: 1.05;
+}
+.direction-btn:active {
+  scale: 0.95;
+}
+#icon-close {
+  position: relative;
+  left: 39rem;
+  bottom: 20rem;
+  height: 1.8rem;
+}
+#icon-close:hover {
+  opacity: 95%;
+  cursor: pointer;
+  scale: 1.05;
+}
+#icon-close:active {
+  scale: 0.95;
+}
+#pop-up-background {
+  display: none;
+  position: absolute;
+  height: 400rem;
+  width: 400rem;
+  background-color: #000000b9;
+  z-index: 4;
+}
+#slide-tumbnails {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 44.8rem;
+  z-index: 7;
+}
+
+.pop-up-thumbnails {
+  height: 6rem;
+  border-radius: 1rem;
+}
+.pop-up-thumbnails:hover {
+  opacity: 95%;
+  cursor: pointer;
+  scale: 1.05;
+}
+.pop-up-thumbnails:active {
+  scale: 1;
+}
+.pop-active {
+  border: 0.3rem solid var(--Orange);
+  opacity: 80%;
+}
+#icon-previous-btn {
+  position: relative;
+  left: 2.2rem;
+}
+#icon-next-btn {
+  position: relative;
+  right: 2.2rem;
+}
+
+/* @media screen and (max width) {
+} the way u want the display to look like, if making it small it should follow same */  
+
+.active-thumbnail {
+  border: 2px solid #ae4bfc;
+  border-radius: 100%;
+  width: 120px;
+} 
+
+/* Add the pop-out animated effect */
+@keyframes popOut {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+.animate-pop-out {
+  animation: popOut 0.3s ease;
+}
+
+.animate-pop-in{
+  animation: popIn 0.3s ease;
+}
+
+.hide{
+  display : none;
+}
+
